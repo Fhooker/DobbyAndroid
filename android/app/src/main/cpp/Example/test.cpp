@@ -4,16 +4,16 @@
 #define JNI_API_DEF(f) Java_test10_def_abc_dobbyandroid_MainActivity_##f
 
 int myadd(int a, int b) {
-    return a+b;
+    return a + b;
 }
 
-int new_myadd(int a, int b){
-    return a+b+1;
+int new_myadd(int a, int b) {
+    return a + b + 1;
 }
 
 void *origin_call;
 
-extern "C"{
+extern "C" {
 int JNI_API_DEF(testadd)(
         JNIEnv *env,
         jobject /* this */,
@@ -26,7 +26,7 @@ int JNI_API_DEF(testadd)(
 void JNI_API_DEF(hookadd)(
         JNIEnv *env,
         jobject /* this */) {
-    DobbyHook((void*)myadd, (void*)new_myadd, (void**)&origin_call);
+    DobbyHook((void *) myadd, (void *) new_myadd, (void **) &origin_call);
 }
 
 }
